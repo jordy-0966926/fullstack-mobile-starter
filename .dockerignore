@@ -1,0 +1,10 @@
+**/node_modules
+**/dist
+**/.env
+**/.env.*
+**/*.log
+**/.expo
+.git
+.idea
+.private
+CASUS.md

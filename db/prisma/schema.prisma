@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+generator drizzle {
+  provider = "drizzle-prisma-generator"
+  output   = "./drizzle"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  admin       Boolean   @default(false)
+  name        String
+  surname     String
+  email       String    @unique
+  password    String?
+  dateCreated DateTime? @default(now()) @map("date_created") @db.Timestamp(6)
+  lastUpdated DateTime? @default(now()) @map("last_updated") @db.Timestamp(6)
+  uuid        String    @unique @default(uuid())
+
+  @@map("user")
+}
